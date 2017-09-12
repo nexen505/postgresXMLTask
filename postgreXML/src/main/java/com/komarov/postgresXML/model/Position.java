@@ -1,14 +1,14 @@
 package com.komarov.postgresXML.model;
 
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 
+@XmlAccessorType(XmlAccessType.NONE)
 public class Position implements Serializable {
-    @XmlElement
     private float x;
-    @XmlElement
     private float y;
-    @XmlElement
     private float z;
 
     public Position() {
@@ -20,6 +20,7 @@ public class Position implements Serializable {
         this.z = z;
     }
 
+    @XmlAttribute
     public float getX() {
         return x;
     }
@@ -28,6 +29,7 @@ public class Position implements Serializable {
         this.x = x;
     }
 
+    @XmlAttribute
     public float getY() {
         return y;
     }
@@ -36,6 +38,7 @@ public class Position implements Serializable {
         this.y = y;
     }
 
+    @XmlAttribute
     public float getZ() {
         return z;
     }

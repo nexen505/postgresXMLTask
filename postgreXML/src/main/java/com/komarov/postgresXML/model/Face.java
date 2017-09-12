@@ -4,11 +4,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 
 public class Face implements Serializable {
-    @XmlAttribute
     private float v1;
-    @XmlAttribute
     private float v2;
-    @XmlAttribute
     private float v3;
 
     public Face() {
@@ -20,6 +17,7 @@ public class Face implements Serializable {
         this.v3 = v3;
     }
 
+    @XmlAttribute
     public float getV1() {
         return v1;
     }
@@ -28,6 +26,7 @@ public class Face implements Serializable {
         this.v1 = v1;
     }
 
+    @XmlAttribute
     public float getV2() {
         return v2;
     }
@@ -36,6 +35,7 @@ public class Face implements Serializable {
         this.v2 = v2;
     }
 
+    @XmlAttribute
     public float getV3() {
         return v3;
     }

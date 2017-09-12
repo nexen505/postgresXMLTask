@@ -1,17 +1,16 @@
 package com.komarov.postgresXML.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 
+@XmlAccessorType(XmlAccessType.NONE)
 public class Rotation implements Serializable {
 
-    @XmlAttribute
     private float qw;
-    @XmlAttribute
     private float qx;
-    @XmlAttribute
     private float qy;
-    @XmlAttribute
     private float qz;
 
     public Rotation() {
@@ -24,6 +23,7 @@ public class Rotation implements Serializable {
         this.qz = qz;
     }
 
+    @XmlAttribute
     public float getQw() {
         return qw;
     }
@@ -32,6 +32,7 @@ public class Rotation implements Serializable {
         this.qw = qw;
     }
 
+    @XmlAttribute
     public float getQx() {
         return qx;
     }
@@ -40,6 +41,7 @@ public class Rotation implements Serializable {
         this.qx = qx;
     }
 
+    @XmlAttribute
     public float getQy() {
         return qy;
     }
@@ -48,6 +50,7 @@ public class Rotation implements Serializable {
         this.qy = qy;
     }
 
+    @XmlAttribute
     public float getQz() {
         return qz;
     }

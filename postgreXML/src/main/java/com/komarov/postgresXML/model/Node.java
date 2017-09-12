@@ -1,20 +1,16 @@
 package com.komarov.postgresXML.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
 
+@XmlAccessorType(XmlAccessType.NONE)
 public class Node implements Serializable {
-    @XmlAttribute
     private String name;
-
-    @XmlAttribute
     private Long id;
-
-    @XmlElement
     private Position position;
-
-    @XmlElement
     private Rotation rotation;
 
     public Node() {
@@ -27,6 +23,7 @@ public class Node implements Serializable {
         this.rotation = rotation;
     }
 
+    @XmlAttribute
     public String getName() {
         return name;
     }
@@ -35,6 +32,7 @@ public class Node implements Serializable {
         this.name = name;
     }
 
+    @XmlAttribute
     public Long getId() {
         return id;
     }
@@ -43,6 +41,7 @@ public class Node implements Serializable {
         this.id = id;
     }
 
+    @XmlElement
     public Position getPosition() {
         return position;
     }
@@ -51,6 +50,7 @@ public class Node implements Serializable {
         this.position = position;
     }
 
+    @XmlElement
     public Rotation getRotation() {
         return rotation;
     }
