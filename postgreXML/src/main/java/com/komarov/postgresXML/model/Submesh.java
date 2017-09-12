@@ -8,6 +8,7 @@ import java.util.List;
 public class Submesh implements Serializable {
     private List<Face> faces;
     private Geometry geometry;
+    private String material;
 
     public Submesh() {
     }
@@ -37,5 +38,14 @@ public class Submesh implements Serializable {
 
     public void setGeometry(Geometry geometry) {
         this.geometry = geometry;
+    }
+
+    @XmlAttribute
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
     }
 }
