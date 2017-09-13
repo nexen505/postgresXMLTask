@@ -9,7 +9,8 @@ public class FaceInfo implements Serializable {
 
     @Id
     @Column(name = "id_file")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "faceinfo_seq")
+    @SequenceGenerator(name = "faceinfo_seq", sequenceName = "faceinfo_seq", allocationSize = 1)
     private int id;
 
     @Column(name = "X1")

@@ -1,5 +1,6 @@
 package com.komarov.postgresXML.app;
 
+import com.komarov.postgresXML.dao.BasicDAO;
 import com.komarov.postgresXML.dao.FaceInfo;
 import com.komarov.postgresXML.dao.ObjectInfo;
 import com.komarov.postgresXML.model.*;
@@ -18,7 +19,9 @@ public class XMLSaver {
         Properties properties = new Properties();
         InputStreamReader in = null;
         try {
-            in = new InputStreamReader(new FileInputStream(args[0]), "UTF-8");
+//            String propsPath = args[0];
+            String propsPath = "D:\\Универ\\git repo\\postgresXMLTask\\postgreXML\\src\\main\\resources\\props.file";
+            in = new InputStreamReader(new FileInputStream(propsPath), "UTF-8");
             properties.load(in);
             JAXBContext ctx = JAXBContext.newInstance(Mesh.class);
             final String path = "D:\\Универ\\git repo\\postgresXMLTask\\Attachments_eminaev@gmail.com_2017-09-12_11-55-54\\result1.xml";
@@ -63,6 +66,9 @@ public class XMLSaver {
                     }
                 }
             });
+            BasicDAO<FaceInfo> dao = new BasicDAO<>(properties);
+            dao.saveEntities(faceInfos);
+
             List<Node> nodes = mesh.getNodes();
             List<ObjectInfo> objectInfos = new ArrayList<>();
             nodes.forEach((Node node) -> {
@@ -85,6 +91,8 @@ public class XMLSaver {
                     objectInfos.add(objectInfo);
                 }
             });
+            BasicDAO<ObjectInfo> objectInfoBasicDAO = new BasicDAO<>(properties);
+            objectInfoBasicDAO.saveEntities(objectInfos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

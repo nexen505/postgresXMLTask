@@ -9,7 +9,8 @@ public class ObjectInfo implements Serializable {
 
     @Id
     @Column(name = "id_file")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "objectinfo_seq")
+    @SequenceGenerator(name = "objectinfo_seq", sequenceName = "objectinfo_seq", allocationSize = 1)
     private int id;
 
     @Column(name = "X1")
