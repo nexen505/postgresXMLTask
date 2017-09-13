@@ -10,13 +10,15 @@ public class Mesh implements Serializable {
 
     private List<Submesh> submeshes;
     private List<Node> nodes;
+    private Geometry geometry;
 
     public Mesh() {
     }
 
-    public Mesh(List<Submesh> submeshes, List<Node> nodes) {
+    public Mesh(List<Submesh> submeshes, List<Node> nodes, Geometry geometry) {
         this.submeshes = submeshes;
         this.nodes = nodes;
+        this.geometry = geometry;
     }
 
     @XmlElementWrapper(name = "submeshes")
@@ -37,5 +39,17 @@ public class Mesh implements Serializable {
 
     public void setNodes(List<Node> nodes) {
         this.nodes = nodes;
+    }
+
+    @XmlElements({
+            @XmlElement(name = "geometry", type = Geometry.class),
+            @XmlElement(name = "sharedgeometry", type = Geometry.class)
+    })
+    public Geometry getGeometry() {
+        return geometry;
+    }
+
+    public void setGeometry(Geometry geometry) {
+        this.geometry = geometry;
     }
 }
