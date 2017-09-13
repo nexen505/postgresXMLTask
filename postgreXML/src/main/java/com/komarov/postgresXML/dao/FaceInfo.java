@@ -147,4 +147,21 @@ public class FaceInfo implements Serializable {
     public void setMaterial(String material) {
         this.material = material;
     }
+
+    @Override
+    public String toString() {
+        return "FaceInfo{" +
+                "id=" + id +
+                ", x1=" + x1 +
+                ", y1=" + y1 +
+                ", z1=" + z1 +
+                ", x2=" + x2 +
+                ", y2=" + y2 +
+                ", z2=" + z2 +
+                ", x3=" + x3 +
+                ", y3=" + y3 +
+                ", z3=" + z3 +
+                ", material='" + material + '\'' +
+                '}';
+    }
 }

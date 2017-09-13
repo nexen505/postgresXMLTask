@@ -13,25 +13,25 @@ public class ObjectInfo implements Serializable {
     @SequenceGenerator(name = "objectinfo_seq", sequenceName = "objectinfo_seq", allocationSize = 1)
     private int id;
 
-    @Column(name = "X1")
+    @Column(name = "X")
     private float x;
 
-    @Column(name = "Y1")
+    @Column(name = "Y")
     private float y;
 
-    @Column(name = "Z1")
+    @Column(name = "Z")
     private float z;
 
-    @Column(name = "X2")
+    @Column(name = "QW")
     private float qw;
 
-    @Column(name = "Y2")
+    @Column(name = "QX")
     private float qx;
 
-    @Column(name = "Z2")
+    @Column(name = "QY")
     private float qy;
 
-    @Column(name = "X3")
+    @Column(name = "QZ")
     private float qz;
 
     @Column(name = "id_obj")
@@ -123,4 +123,18 @@ public class ObjectInfo implements Serializable {
         this.objectName = objectName;
     }
 
+    @Override
+    public String toString() {
+        return "ObjectInfo{" +
+                "id=" + id +
+                ", x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                ", qw=" + qw +
+                ", qx=" + qx +
+                ", qy=" + qy +
+                ", qz=" + qz +
+                ", objectName='" + objectName + '\'' +
+                '}';
+    }
 }

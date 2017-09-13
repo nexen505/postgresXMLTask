@@ -29,7 +29,7 @@ public class BasicDAO<T> {
     private void prepareProps(Properties properties) {
         properties.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("show_sql", "true");
     }
 
@@ -45,7 +45,7 @@ public class BasicDAO<T> {
         }
     }
 
-    private void shutdown() {
+    public void shutdown() {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
@@ -58,14 +58,20 @@ public class BasicDAO<T> {
 
     public void saveEntities(List<T> entities) {
         if (entities != null) {
-            for (T entity : entities) {
+            System.out.println("Saving " + entities.size() + " entities..");
+            final int[] count = {0};
+            entities.forEach((T entity) -> {
+                System.out.println("Saving entity: " + entity.toString());
                 Transaction transaction = null;
                 Session session = sessionFactory.openSession();
                 try {
                     transaction = session.beginTransaction();
                     session.save(entity);
                     session.getTransaction().commit();
+                    System.out.println("Entity is saved! ");
+                    count[0]++;
                 } catch (Exception ex) {
+                    System.out.println("Entity wasn't saved. Exception: " + ex.getMessage());
                     if (transaction != null) {
                         transaction.rollback();
                     }
@@ -75,7 +81,8 @@ public class BasicDAO<T> {
                         session.close();
                     }
                 }
-            }
+            });
+            System.out.println("Saved " + count[0] + " of " + entities.size() + " entities!");
         }
     }
 }

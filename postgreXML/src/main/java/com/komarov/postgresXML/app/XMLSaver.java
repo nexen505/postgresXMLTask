@@ -68,6 +68,7 @@ public class XMLSaver {
             });
             BasicDAO<FaceInfo> dao = new BasicDAO<>(properties);
             dao.saveEntities(faceInfos);
+            dao.shutdown();
 
             List<Node> nodes = mesh.getNodes();
             List<ObjectInfo> objectInfos = new ArrayList<>();
@@ -93,6 +94,7 @@ public class XMLSaver {
             });
             BasicDAO<ObjectInfo> objectInfoBasicDAO = new BasicDAO<>(properties);
             objectInfoBasicDAO.saveEntities(objectInfos);
+            objectInfoBasicDAO.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -103,5 +105,6 @@ public class XMLSaver {
                 }
             }
         }
+        System.exit(0);
     }
 }
